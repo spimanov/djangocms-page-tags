@@ -8,7 +8,7 @@ from cms.toolbar_base import CMSToolbar
 from cms.toolbar_pool import toolbar_pool
 from cms.utils.i18n import get_language_list, get_language_object
 from cms.utils.permissions import has_page_permission
-from django.core.urlresolvers import NoReverseMatch, reverse
+from django.urls import NoReverseMatch, reverse
 from django.utils.translation import ugettext_lazy as _
 
 from .models import PageTags, TitleTags
@@ -46,7 +46,7 @@ class PageTagsToolbar(CMSToolbar):
             self.request.current_page.has_change_permission(self.request.user)
         )
         if has_global_current_page_change_permission or can_change:
-            not_edit_mode = not self.toolbar.edit_mode
+            not_edit_mode = not self.toolbar.edit_mode_active
             tags_menu = self.toolbar.get_or_create_menu('page')
             super_item = tags_menu.find_first(Break, identifier=PAGE_MENU_SECOND_BREAK) + 1
             tags_menu = tags_menu.get_or_create_menu(

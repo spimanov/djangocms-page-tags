@@ -7,7 +7,7 @@ from __future__ import absolute_import, print_function, unicode_literals
 from cms.toolbar.items import Menu, ModalItem, SubMenu
 from cms.utils.i18n import get_language_object
 from django.contrib.auth.models import Permission, User
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.test.utils import override_settings
 from django.utils.encoding import force_text
 
